@@ -13,8 +13,7 @@ port = 12345
 clientSocket2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientSocket2.connect((host, port))
 
+threading.Thread(target=recv_msgandprint, args=(clientSocket2,)).start()
 while True:
-    threading.Thread(target=recv_msgandprint, args=(clientSocket2,)).start()
     message1 = input()
     clientSocket2.send(message1.encode())
-
